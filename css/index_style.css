@@ -1,0 +1,13 @@
+.header-logo {
+    float: left;
+}
+
+.search {
+    float: left;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.thumbnail {
+box-shadow: 1px 5px 15px 2px black;
+}
