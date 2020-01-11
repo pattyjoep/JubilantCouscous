@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Boostrap CSS 
+    <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    -->
+    
 
     <!-- Foundation CSS -->
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
@@ -21,6 +21,37 @@
     </div>
     <div class="top-bar">
       <div class="jumbotron jumbotron-fluid col-11">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li class="menu-text header-logo">Hungry Humans</li>
+
+            <div class="dropdown search">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Food Type
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">American</button>
+                    <button class="dropdown-item" type="button">Asian</button>
+                    <button class="dropdown-item" type="button">Mexican</button>
+                    <button class="dropdown-item" type="button">Indian</button>
+                    <button class="dropdown-item" type="button">Italian</button>
+                </div>
+            </div>
+
+            <input id="IDKSearch" class="search idk-search" type="text" placeholder="IDK, but I'm HANGRY">
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+            <li><a href="#">Five</a></li>
+            <li><a href="#">Six</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
         <ul class="orbit-container">
           <div class="top-bar-left">
             <ul class="menu">
@@ -43,11 +74,14 @@
               </ul>
         </div>
       </div>
+
+      <div class="dropdown-divider"></div>
+
       <div class="row column text-center">
-        <h2>Our Newest Products</h2>
+        <h2>Top Rated Results</h2>
         <hr>
       </div>
-      <div class="row small-up-2 large-up-4">
+      <div class="row small-up-2 large-up-5">
         <div class="column">
           <img class="thumbnail" src="https://placehold.it/300x400">
           <h5>American</h5>
@@ -67,6 +101,39 @@
           <img class="thumbnail" src="https://placehold.it/300x400">
           <h5>American</h5>
           <a href="#" class="button expanded">Buy</a>
+            <h5 id="rating">Rating</h5>
+            <img class="thumbnail" src="https://placehold.it/300x400">
+            <h5>Resturant Name</h5>
+            <a href="#" class="button expanded">Website</a>
+            <a href="#" class="button expanded">Menu</a>
+        </div>
+        <div class="column">
+            <h5 id="rating">Rating</h5>
+            <img class="thumbnail" src="https://placehold.it/300x400">
+            <h5 id="rating">Resturant Name</h5> 
+            <a href="#" class="button expanded">Website</a>
+            <a href="#" class="button expanded">Menu</a>
+        </div>
+        <div class="column">
+            <h5 id="rating">Rating</h5>
+            <img class="thumbnail" src="https://placehold.it/300x400">
+            <h5>Resturant Name</h5>
+            <a href="#" class="button expanded">Website</a>
+            <a href="#" class="button expanded">Menu</a>
+        </div>
+        <div class="column">
+            <h5 id="rating">Rating</h5>
+            <img class="thumbnail" src="https://placehold.it/300x400">
+            <h5>Resturant Name</h5>
+            <a href="#" class="button expanded">Website</a>
+            <a href="#" class="button expanded">Menu</a>
+        </div>
+        <div class="column">
+            <h5 id="rating">Rating</h5>
+            <img class="thumbnail" src="https://placehold.it/300x400">
+            <h5>Resturant Name</h5>
+            <a href="#" class="button expanded">Website</a>
+            <a href="#" class="button expanded">Menu</a>
         </div>
       </div>
       <hr>
@@ -231,7 +298,7 @@
     
 </body>
 
-<!-- Boostrap JS / JQUERY-->
+<!-- Boostrap JS / JQUERY -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -239,15 +306,15 @@
 <!-- Foundation Scripts -->
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-
-<script>
-    $(document).foundation();
-  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+<script src="javascript\foundation_scripts.js"></script>
 
 <!-- JQUERY -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Custom JS / JQUERY-->
 <script src="javascript\index_scripts.js"></script>
+
+
 
 </html>
