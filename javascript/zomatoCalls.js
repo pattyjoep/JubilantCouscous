@@ -1,16 +1,11 @@
 // api to be passed in header
 var zomatoAPIKey = "2f37220a29eeef45196157298a495add"
-var cuisineType = "Mexican"
+var cuisineType = ""
 var selectedLatitude = 41
 var selectedLongitude = -72
 var cuisineIDs = []
 
 // button clicks. some may be moved to foundation_scripts or index_scripts
-$("#dropdownMenu2~.dropdown-menu>.dropdown-item").on("click", function (event) {
-    event.preventDefault();
-    cuisineType = $(this).text();
-    $("#dropdownMenu2").text(cuisineType);
-});
 $(".top-bar-right").on("click", function (event) {
     event.preventDefault();
     if (cuisineType === "") {
@@ -19,6 +14,12 @@ $(".top-bar-right").on("click", function (event) {
         getCuisineList();
     };
 })
+$("body").on("click",".cuisine",function (event){
+    event.preventDefault();
+    cuisineType = $(this).children("h5").text();
+    console.log(cuisineType)
+    getCuisineList();
+})  
 // Future functionality: function gets categories and IDs (categories like delivery, breakfast, nightlife, etc)
 // API has no parameters
 function getCategoryID() {
@@ -131,7 +132,7 @@ function searchRestaurant() {
     // call restaurant API search and run populateRestaurantInfo on success
     callAJAX(searchAPIURL, populateRestaurantInfo)
 }
-getCuisineList();
+
 
 // called on successful completion of restaurant search, populates restaurant data into HTML
 function populateRestaurantInfo(response) {
@@ -151,6 +152,7 @@ function populateRestaurantInfo(response) {
         $(divID + " a:last-of-type").attr("href",restObj.menu_url)
 
     });
+    $(".results").removeClass("hide");
 };
 
 
