@@ -6,7 +6,7 @@ var selectedLongitude = -72
 var cuisineIDs = []
 
 // button clicks. some may be moved to foundation_scripts or index_scripts
-$(".top-bar-right").on("click", function (event) {
+$(".top-bar-right, .allFlavors").on("click", function (event) {
     event.preventDefault();
     if (cuisineType === "") {
         searchRestaurant();
