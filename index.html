@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
   <!-- Boostrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -26,6 +27,10 @@
 
 <body>
 
+   <!--Search Bar
+        <li><input type="search" placeholder="Search">
+          <li><button id="search-btn" type="submit"><i class="fa fa-search"></i></button>-->
+            <button type="button" class="button"> Find Nearby</button></li>
 
   </ul>
   </div>
@@ -34,7 +39,8 @@
   <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
     <div class="orbit-wrapper">
       <div class="orbit-controls">
-        <h3>Hungry Humans</h3>
+        <h1 class="display-1 h1-text ml-1 animated slideInDown" id="h1-1">Hungry</h1>
+            <h1 class="display-1 h1-text animated slideInUp" id="h1-2">Humans</h1>
         <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
         <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
         <ul class="menu">
@@ -76,10 +82,6 @@
       <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
       <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
     </nav>
-        <!--Search Bar-->
-        <li><input type="search" placeholder="Search">
-          <li><button id="search-btn" type="submit"><i class="fa fa-search"></i></button> 
-            <button type="button" class="button"> Find Nearby</button></li>
   </div>
 </div>
 
