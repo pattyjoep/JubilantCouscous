@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-
   <!-- Boostrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -26,24 +22,22 @@
 </head>
 
 <body>
-
-  <!--Search Bar
-        <li><input type="search" placeholder="Search">
-          <li><button id="search-btn" type="submit"><i class="fa fa-search"></i></button>-->
-  <button id="findNear" type="button" class="button"> Find Nearby</button></li>
-
-  </ul>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <h3>Hungry Humans</h3>
+    </div>
+    <div class="top-bar-right">
+      <button>Find Nearby</button>
+    </div>
   </div>
-  <!---Jumbotron-->
-  <div class="jumbotron jumbotron-fluid col-5">
+
+  <br>
+  <div class="jumbotron jumbotron-fluid col-7">
     <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
       <div class="orbit-wrapper">
         <div class="orbit-controls">
-          <h1 class="display-1 h1-text ml-1 animated slideInDown" id="h1-1">Hungry</h1>
-          <h1 class="display-1 h1-text animated slideInUp" id="h1-2">Humans</h1>
           <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
           <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-          <ul class="menu">
         </div>
         <ul class="orbit-container">
           <li class="is-active orbit-slide">
@@ -76,10 +70,9 @@
                 src=https://casasensei.com/wp-content/uploads/2019/06/South-Indian-Bruschetta-Recipe.jpg alt="Space">
               <figcaption class="orbit-caption">Outta This World</figcaption>
             </figure>
-
+          </li>
         </ul>
       </div>
-
       <nav class="orbit-bullets">
         <button class="is-active" data-slide="0">
           <span class="show-for-sr">First slide details.</span>
@@ -92,82 +85,95 @@
     </div>
   </div>
 
-  <!---Top Rated Bar-->
 
-  <h2>Top Rated Results</h2>
-  <div class="row small-up-5">
-    <div class="column">
-      <h5 id="TopRatedName1">Resturant Name</h5>
-      <a href="#"><img class="thumbnail" src="https://placehold.it/250x200"></a>
-      <h5 id="Rating1">Rating</h5>
-      <a href="#" class="button expanded">Menu</a>
-    </div>
-    <div class="column">
-      <h5 id="TopRatedName2">Resturant Name</h5>
-      <a href="#"><img class="thumbnail" src="https://placehold.it/250x200"></a>
-      <h5 id="Rating2">Rating</h5>
-      <a href="#" class="button expanded">Menu</a>
-    </div>
-    <div class="column">
-      <h5 id="TopRatedName3">Resturant Name</h5>
-      <a href="#"><img class="thumbnail" src="https://placehold.it/250x200"></a>
-      <h5 id="Rating3">Rating</h5>
-      <a href="#" class="button expanded">Menu</a>
-    </div>
-    <div class="column">
-      <h5 id="TopRatedName4">Resturant Name</h5>
-      <a href="#"><img class="thumbnail" src="https://placehold.it/250x200"></a>
-      <h5 id="Rating4">Rating</h5>
-      <a href="#" class="button expanded">Menu</a>
-    </div>
-    <div class="column">
-      <h5 id="TopRatedName5">Resturant Name</h5>
-      <a href="#"><img class="thumbnail" src="https://placehold.it/250x200"></a>
-      <h5 id="Rating5">Rating</h5>
-      <a href="#" class="button expanded">Menu</a>
-    </div>
 
-    <div class="dropdown-divider"></div>
+  <div class="dropdown-divider"></div>
 
-    <!---Top Cuisines Bar-->
-
+  <div class="hide results row column text-center">
+    <h2>Top Rated Results</h2>
+    <hr>
+  </div>
+  <div class="hide results row small-up-2 large-up-5">
+    <div id="TopRated1" class="column">
+      <h5>Resturant Name</h5>
+      <img class="thumbnail" src="https://placehold.it/300x400">
+      <h5>Rating</h5>
+      <a href="#" class="button expanded">Website</a>
+      <a href="#" class="button expanded">Menu</a>
+    </div>
+    <div id="TopRated2" class="column">
+      <h5>Resturant Name</h5>
+      <img class="thumbnail" src="https://placehold.it/300x400">
+      <h5>Rating</h5>
+      <a href="#" class="button expanded">Website</a>
+      <a href="#" class="button expanded">Menu</a>
+    </div>
+    <div id="TopRated3" class="column">
+      <h5>Resturant Name</h5>
+      <img class="thumbnail" src="https://placehold.it/300x400">
+      <h5>Rating</h5>
+      <a href="#" class="button expanded">Website</a>
+      <a href="#" class="button expanded">Menu</a>
+    </div>
+    <div id="TopRated4" class="column">
+      <h5>Resturant Name</h5>
+      <img class="thumbnail" src="https://placehold.it/300x400">
+      <h5>Rating</h5>
+      <a href="#" class="button expanded">Website</a>
+      <a href="#" class="button expanded">Menu</a>
+    </div>
+    <div id="TopRated5" class="column">
+      <h5 class="name">Resturant Name</h5>
+      <img class="thumbnail" src="https://placehold.it/300x400">
+      <h5>Rating</h5>
+      <a href="#" class="button expanded">Website</a>
+      <a href="#" class="button expanded">Menu</a>
+    </div>
+  </div>
+  <hr>
+  <div class="row column">
+    <div class="allFlavors callout primary">
+      <h3>All Flavors Are Welcome.</h3>
+    </div>
+  </div>
+  <hr>
+  <div class="row column text-center">
     <h2>Top Cuisines</h2>
-    <div class="row column text-center">
+    <hr>
+  </div>
+  <div class="row small-up-2 medium-up-3 large-up-6">
+    <div class="column cuisine">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/pizza">
+      <h5>Italian</h5>
+      <a href="#" class="button small expanded hollow">Menus</a>
+    </div>
+    <div class="column cuisine">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/sandwiches">
+      <h5>American</h5>
+      <a href="#" class="button small expanded hollow">Menus</a>
+    </div>
+    <div class="column cuisine">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/indian">
+      <h5>Indian</h5>
+      <a href="#" class="button small expanded hollow">Menus</a>
+    </div>
+    <div class="column cuisine">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/japanese">
+      <h5>Asian</h5>
+      <a href="#" class="button small expanded hollow">Menus</a>
+    </div>
+    <div class="column cuisine">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/mexican">
+      <h5>Mexican</h5>
+      <a href="#" class="button small expanded hollow">Menus</a>
     </div>
 
-    <div class="row small-up-2 medium-up-3 large-up-6">
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/pizza">
-        <h5>Italian</h5>
-        <a href="#" class="button small expanded hollow">Menus</a>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/sandwiches">
-        <h5>American</h5>
-        <a href="#" class="button small expanded hollow">Menus</a>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/indian">
-        <h5>Indian</h5>
-        <a href="#" class="button small expanded hollow">Menus</a>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/japanese">
-        <h5>Asian</h5>
-        <a href="#" class="button small expanded hollow">Menus</a>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/mexican">
-        <h5>Mexican</h5>
-        <a href="#" class="button small expanded hollow">Menus</a>
-      </div>
-
-    </div>
+  </div>
   </div>
   </div>
   </div>
@@ -193,9 +199,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Custom JS / JQUERY-->
-<script src="javascript/geoLocScript.js"></script>
 <script src="javascript/zomatoCalls.js"></script>
-<script src="javascript/index_scripts.js"></script>
+<script src="javascript\index_scripts.js"></script>
 
 
 
