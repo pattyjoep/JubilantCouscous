@@ -24,7 +24,6 @@ $("body").on("click", ".cuisine", function (event) {
 // API has no parameters
 function getCategoryID() {
     var categoryAPIURL = "https://developers.zomato.com/api/v2.1/categories"
-    AJAXControll = false;
     function useCategoryResponse(categoryResponse) {
     }
     callAJAX(categoryAPIURL, useCategoryResponse);
