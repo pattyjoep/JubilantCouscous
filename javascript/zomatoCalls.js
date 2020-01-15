@@ -4,6 +4,7 @@ var cuisineType = ""
 var selectedLatitude = 41
 var selectedLongitude = -72
 var cuisineIDs = []
+var restaurantsCoord = []
 
 // button clicks. some may be moved to foundation_scripts or index_scripts
 $(".top-bar-right, .allFlavors").on("click", function (event) {
@@ -136,6 +137,7 @@ function searchRestaurant() {
 
 // called on successful completion of restaurant search, populates restaurant data into HTML
 function populateRestaurantInfo(response) {
+    restaurantsCoord = [];
     var restList = response.restaurants;
     // for each restaurant found...
     restList.forEach((element, index) => {
@@ -150,9 +152,15 @@ function populateRestaurantInfo(response) {
         $(divID + " h5:last-of-type").text("Rating: " + restObj.user_rating.aggregate_rating)
         $(divID + " a:first-of-type").attr("href",restObj.url)
         $(divID + " a:last-of-type").attr("href",restObj.menu_url)
+        var thisRestCoord = {
+            "longitude": restObj.location.longitude,
+            "latitude": restObj.location.latitude
+        };
+        restaurantsCoord.push(thisRestCoord);
 
     });
     $(".results").removeClass("hide");
+    console.log(restaurantsCoord)
 };
 
 
