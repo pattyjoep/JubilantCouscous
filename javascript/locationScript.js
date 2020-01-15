@@ -28,11 +28,11 @@ var pageLongitude = '';
 
 function findPageLocation() {
 
-    var status = document.querySelector('#status');
-    var mapLink = document.querySelector('#map-link');
+    // var status = document.querySelector('#status');
+    // var mapLink = document.querySelector('#map-link');
 
-    mapLink.href = '';
-    mapLink.textContent = '';
+    // mapLink.href = '';
+    // mapLink.textContent = '';
 
     function success(position) {
         pageLatitude = position.coords.latitude;

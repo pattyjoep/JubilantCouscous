@@ -1,26 +1,26 @@
 // api to be passed in header
 var zomatoAPIKey = "2f37220a29eeef45196157298a495add"
 var cuisineType = ""
-var selectedLatitude = 41
-var selectedLongitude = -72
 var cuisineIDs = []
 var restaurantsCoord = []
+var fiveCoordString = ""
 
 // button clicks. some may be moved to foundation_scripts or index_scripts
 $("#findNear, .allFlavors").on("click", function (event) {
     event.preventDefault();
+    cuisineType = ""
     if (cuisineType === "") {
         searchRestaurant();
     } else {
         getCuisineList();
     };
 })
-$("body").on("click",".cuisine",function (event){
+$("body").on("click", ".cuisine", function (event) {
     event.preventDefault();
     cuisineType = $(this).children("h5").text();
     console.log(cuisineType)
     getCuisineList();
-})  
+})
 // Future functionality: function gets categories and IDs (categories like delivery, breakfast, nightlife, etc)
 // API has no parameters
 function getCategoryID() {
@@ -61,8 +61,8 @@ function getCityInfo() {
 function getCuisineList() {
     var cuisineAPIURL = "https://developers.zomato.com/api/v2.1/cuisines?";
     var searchCuisineCity = "";
-    var searchCuisineLat = selectedLatitude;
-    var searchCuisineLon = selectedLongitude;
+    var searchCuisineLat = pageLatitude;
+    var searchCuisineLon = pageLongitude;
     if (searchCuisineCity !== "") {
         cuisineAPIURL += "city_id=" + searchCuisineCity;
     }
@@ -98,8 +98,8 @@ function searchRestaurant() {
     var maxRestaurants = 5
     var sortBy = "&sort=rating"
     var searchByCuisines = ""
-    var searchByLat = "&lat=" + selectedLatitude
-    var searchByLon = "&lon=" + selectedLongitude
+    var searchByLat = "&lat=" + pageLatitude
+    var searchByLon = "&lon=" + pageLongitude
     var orderBy = "&order=desc"
     var searchRadius = 100
     // if there are IDs returned from cuisine search API call
@@ -148,18 +148,17 @@ function populateRestaurantInfo(response) {
             "src": restObj.featured_image,
             "style": "width: 100% !important; height: 50% !important;"
         });
-        $(divID).text(restObj.name).attr("style","white-space:nowrap; overflow:hidden;")
+        $(divID).text(index + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
         $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating)
         // $(divID + "~a").attr("href",restObj.url)
-        $(divID + "~a.button").attr("href",restObj.menu_url)
-        var thisRestCoord = {
-            "longitude": restObj.location.longitude,
-            "latitude": restObj.location.latitude
-        };
+        $(divID + "~a.button").attr("href", restObj.menu_url)
+        var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + (index + 1);
         restaurantsCoord.push(thisRestCoord);
-
     });
     $(".results").removeClass("hide");
+    console.log(restaurantsCoord)
+    // format to be lat,long|flag-i||lat,long|flag-i
+    restaurantsCoord = restaurantsCoord.join("||")
     console.log(restaurantsCoord)
 };
 
