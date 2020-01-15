@@ -1,14 +1,14 @@
 // api to be passed in header
-var zomatoAPIKey = "2f37220a29eeef45196157298a495add"
-var cuisineType = ""
-var cuisineIDs = []
-var restaurantsCoord = []
-var fiveCoordString = ""
+var zomatoAPIKey = "2f37220a29eeef45196157298a495add";
+var cuisineType = "";
+var cuisineIDs = [];
+var restaurantsCoord = [];
+var fiveCoordString = "";
 
 // button clicks. some may be moved to foundation_scripts or index_scripts
 $("#findNear, .allFlavors").on("click", function (event) {
     event.preventDefault();
-    cuisineType = ""
+    cuisineType = "";
     if (cuisineType === "") {
         searchRestaurant();
     } else {
@@ -18,33 +18,31 @@ $("#findNear, .allFlavors").on("click", function (event) {
 $("body").on("click", ".cuisine", function (event) {
     event.preventDefault();
     cuisineType = $(this).children("h5").text();
-    console.log(cuisineType)
     getCuisineList();
 })
 // Future functionality: function gets categories and IDs (categories like delivery, breakfast, nightlife, etc)
 // API has no parameters
 function getCategoryID() {
     var categoryAPIURL = "https://developers.zomato.com/api/v2.1/categories"
-    AJAXControll = false
+    AJAXControll = false;
     function useCategoryResponse(categoryResponse) {
-        console.log(categoryResponse)
     }
-    callAJAX(categoryAPIURL, useCategoryResponse)
+    callAJAX(categoryAPIURL, useCategoryResponse);
 }
 // Future functionality: function gets city information such as city-id by Name, or by Lat/Lon 
 // API parameters q (query by city name), lat (latitude), lon (longitude), count (max results)
 function getCityInfo() {
-    var cityAPIURL = "https://developers.zomato.com/api/v2.1/cities?count="
-    var searchCity = ""
-    var searchCityLongitude = 0
-    var searchCityLatitude = 0
-    var maxSearchResult = 1
-    cityAPIURL = cityAPIURL + maxSearchResult
+    var cityAPIURL = "https://developers.zomato.com/api/v2.1/cities?count=";
+    var searchCity = "";
+    var searchCityLongitude = 0;
+    var searchCityLatitude = 0;
+    var maxSearchResult = 1;
+    cityAPIURL = cityAPIURL + maxSearchResult;
     if (searchCity !== "") {
-        cityAPIURL = cityAPIURL + "&q=" + searchCity
+        cityAPIURL = cityAPIURL + "&q=" + searchCity;
     }
     else if (searchCityLatitude !== 0 && searchCityLongitude !== 0) {
-        cityAPIURL = cityAPIURL + "&lat=" + searchCityLatitude + "&long=" + searchCityLongitude
+        cityAPIURL = cityAPIURL + "&lat=" + searchCityLatitude + "&long=" + searchCityLongitude;
     } else {
         // error code goes here, remember NO ALERTS
         // return out of function after error
@@ -67,14 +65,14 @@ function getCuisineList() {
         cuisineAPIURL += "city_id=" + searchCuisineCity;
     }
     else {
-        cuisineAPIURL = cuisineAPIURL + "lat=" + searchCuisineLat + "&lon=" + searchCuisineLon
+        cuisineAPIURL = cuisineAPIURL + "lat=" + searchCuisineLat + "&lon=" + searchCuisineLon;
     }
     callAJAX(cuisineAPIURL, useCuisineResponse)
 }
 // function called once cuisine API call is successfully complete
 // gets cuisine IDs of user selected cuisine type and then calls search restaurant
 function useCuisineResponse(response) {
-    cuisineIDs = []
+    cuisineIDs = [];
     response.cuisines.forEach(element => {
         if (element.cuisine.cuisine_name === cuisineType) {
             cuisineIDs.push({
@@ -83,7 +81,7 @@ function useCuisineResponse(response) {
             })
         }
     });
-    searchRestaurant()
+    searchRestaurant();
 }
 
 // function to search for restaurants, no parameters are required
@@ -92,24 +90,24 @@ function useCuisineResponse(response) {
 // radius (around lat/lon in Meters), cuisines (list of comma separated cuisine IDs), category (category IDs),
 // sort (sort by cost, rating, real_distance), order (used with sort asc, desc)
 function searchRestaurant() {
-    var searchAPIURL = "https://developers.zomato.com/api/v2.1/search?count="
+    var searchAPIURL = "https://developers.zomato.com/api/v2.1/search?count=";
     // var searchKeyWord = ""
     // var searchByCategory = ""
-    var maxRestaurants = 5
-    var sortBy = "&sort=rating"
-    var searchByCuisines = ""
-    var searchByLat = "&lat=" + pageLatitude
-    var searchByLon = "&lon=" + pageLongitude
-    var orderBy = "&order=desc"
-    var searchRadius = 100
+    var maxRestaurants = 5;
+    var sortBy = "&sort=rating";
+    var searchByCuisines = "";
+    var searchByLat = "&lat=" + pageLatitude;
+    var searchByLon = "&lon=" + pageLongitude;
+    var orderBy = "&order=desc";
+    var searchRadius = 100;
     // if there are IDs returned from cuisine search API call
     if (cuisineIDs !== []) {
         // combine them into a string separated by ","
         cuisineIDs.forEach(function (element, index) {
             if (index === 0) {
-                searchByCuisines = element.cuisine_id
+                searchByCuisines = element.cuisine_id;
             } else {
-                searchByCuisines += "," + element.cuisine_id
+                searchByCuisines += "," + element.cuisine_id;
             }
         });
     }
@@ -141,25 +139,23 @@ function populateRestaurantInfo(response) {
     var restList = response.restaurants;
     // for each restaurant found...
     restList.forEach((element, index) => {
-        var divID = "#TopRatedName" + (index + 1)
+        var normInd = (index + 1)
+        var divID = "#TopRatedName" + normInd
         var restObj = element.restaurant
-        console.log(restObj)
         $(divID + "~a>img").attr({
             "src": restObj.featured_image,
             "style": "width: 100% !important; height: 50% !important;"
         });
-        $(divID).text(index + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
+        $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
         $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating)
         // $(divID + "~a").attr("href",restObj.url)
         $(divID + "~a.button").attr("href", restObj.menu_url)
-        var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + (index + 1);
+        var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + normInd;
         restaurantsCoord.push(thisRestCoord);
     });
     $(".results").removeClass("hide");
-    console.log(restaurantsCoord)
     // format to be lat,long|flag-i||lat,long|flag-i
     restaurantsCoord = restaurantsCoord.join("||")
-    console.log(restaurantsCoord)
 };
 
 
