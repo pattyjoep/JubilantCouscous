@@ -168,7 +168,7 @@ function populateRestaurantInfo(response) {
         var restObj = element.restaurant
         $(divID + "~a>img").attr({
             "src": restObj.featured_image,
-            "style": "width: 100% !important; height: 50% !important;"
+            "style": "width: 100% !important; height: 7em !important;"
         });
         $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
         $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating)
