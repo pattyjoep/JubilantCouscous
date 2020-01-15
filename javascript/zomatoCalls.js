@@ -7,7 +7,7 @@ var cuisineIDs = []
 var restaurantsCoord = []
 
 // button clicks. some may be moved to foundation_scripts or index_scripts
-$(".top-bar-right>.menu>li>.button, .allFlavors").on("click", function (event) {
+$("#findNear, .allFlavors").on("click", function (event) {
     event.preventDefault();
     if (cuisineType === "") {
         searchRestaurant();
