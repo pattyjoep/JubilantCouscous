@@ -13,7 +13,7 @@ body {
 
 .jumbotron {
     overflow-y:500px;
-    width: 900px; 
+    width: 800px; 
     height: 500px;
     margin: auto;
     display: flex;
