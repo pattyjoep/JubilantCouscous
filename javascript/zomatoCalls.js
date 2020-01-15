@@ -1,56 +1,81 @@
 // api to be passed in header
 var zomatoAPIKey = "2f37220a29eeef45196157298a495add";
+// define cuisine variable for optional usage
 var cuisineType = "";
+// array to store more than one ID from zomato for optional cuisines to search
 var cuisineIDs = [];
+// array for coordinates of all returned restaurants
 var restaurantsCoord = [];
+// concatenated string of coordinates of 5 restaurants for combined map API call
 var fiveCoordString = "";
 
-// button clicks. some may be moved to foundation_scripts or index_scripts
-$("#findNear, .allFlavors").on("click", function (event) {
+// click for least restrictive restaurant search
+$("#findNear").on("click", function (event) {
+    // prevent default form submission (incase element ends up in a form)
     event.preventDefault();
+    // clear out cusine type, if previously selected since multi criteria not yet possible/allowed
     cuisineType = "";
+    // Future fucntionality to allow for one/more cusine type searches, 
     if (cuisineType === "") {
+        // if no type defined, just search all restaurants
         searchRestaurant();
     } else {
+        // if list of cuisines exists, search IDs first
         getCuisineList();
     };
 })
+// click for specific cuisine pictures
 $("body").on("click", ".cuisine", function (event) {
+    // prevent default form submission (in case element ends up in a form)
     event.preventDefault();
+    // get cuisine type from text in child H5 element
     cuisineType = $(this).children("h5").text();
+    // call function to get cuisine ID to search restaurants
     getCuisineList();
 })
-// Future functionality: function gets categories and IDs (categories like delivery, breakfast, nightlife, etc)
+// Future functionality: function to get categories and IDs (categories like delivery, breakfast, nightlife, etc)
 // API has no parameters
 function getCategoryID() {
+    // API URL
     var categoryAPIURL = "https://developers.zomato.com/api/v2.1/categories"
+    // function to use response from AJAX call
     function useCategoryResponse(categoryResponse) {
     }
+    //  AJAX call to URL with call back for success
     callAJAX(categoryAPIURL, useCategoryResponse);
 }
 // Future functionality: function gets city information such as city-id by Name, or by Lat/Lon 
 // API parameters q (query by city name), lat (latitude), lon (longitude), count (max results)
 function getCityInfo() {
+    // base URL
     var cityAPIURL = "https://developers.zomato.com/api/v2.1/cities?count=";
+    // varible for city name to search for
     var searchCity = "";
+    // varibles to search by lat/lon coordinates
     var searchCityLongitude = 0;
     var searchCityLatitude = 0;
+    // varible for max results for API to return, for future dynamic adjustment
     var maxSearchResult = 1;
+    // add # of requested results to base URL
     cityAPIURL = cityAPIURL + maxSearchResult;
+    // if searching by city name, update URL
     if (searchCity !== "") {
         cityAPIURL = cityAPIURL + "&q=" + searchCity;
     }
+    // if lat/lon provided, update URL
     else if (searchCityLatitude !== 0 && searchCityLongitude !== 0) {
         cityAPIURL = cityAPIURL + "&lat=" + searchCityLatitude + "&long=" + searchCityLongitude;
     } else {
-        // error code goes here, remember NO ALERTS
+        // error code goes here (to be a modal)
         // return out of function after error
     }
-    function useCuisineResponse() {
+    // function to process successful response from AJAX call
+    function useCityResponse() {
         // populate ... with response
-        // or use City ID to call a search
+        // or use City ID(s) to call a restaurant search
     }
-    callAJAX(cityAPIURL, useCuisineResponse)
+    // call City search URL with AJAX and pass function to use on success
+    callAJAX(cityAPIURL, useCityResponse)
 }
 
 // function gets list of cuisines with IDs within a city or at specified coordinates
