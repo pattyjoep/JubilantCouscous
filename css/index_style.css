@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to bottom right, #a3a3a2, #7a41c4);
+  background-image: linear-gradient(to bottom right, #1d1d1d, #7a41c4);
   min-height: 100vh;
   max-width: 100%;
   font-family: "Six Caps", sans-serif;
