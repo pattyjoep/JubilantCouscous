@@ -4,9 +4,10 @@ var cuisineType = ""
 var selectedLatitude = 41
 var selectedLongitude = -72
 var cuisineIDs = []
+var restaurantsCoord = []
 
 // button clicks. some may be moved to foundation_scripts or index_scripts
-$(".top-bar-right").on("click", function (event) {
+$(".top-bar-right>.menu>li>.button, .allFlavors").on("click", function (event) {
     event.preventDefault();
     if (cuisineType === "") {
         searchRestaurant();
@@ -136,23 +137,30 @@ function searchRestaurant() {
 
 // called on successful completion of restaurant search, populates restaurant data into HTML
 function populateRestaurantInfo(response) {
+    restaurantsCoord = [];
     var restList = response.restaurants;
     // for each restaurant found...
     restList.forEach((element, index) => {
-        var divID = "#TopRated" + (index + 1)
+        var divID = "#TopRatedName" + (index + 1)
         var restObj = element.restaurant
         console.log(restObj)
-        $(divID + ">img").attr({
+        $(divID + "~a>img").attr({
             "src": restObj.featured_image,
             "style": "width: 100% !important; height: 50% !important;"
         });
-        $(divID + " h5:first-of-type").text(restObj.name).attr("style","white-space:nowrap; overflow:hidden;")
-        $(divID + " h5:last-of-type").text("Rating: " + restObj.user_rating.aggregate_rating)
-        $(divID + " a:first-of-type").attr("href",restObj.url)
-        $(divID + " a:last-of-type").attr("href",restObj.menu_url)
+        $(divID).text(restObj.name).attr("style","white-space:nowrap; overflow:hidden;")
+        $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating)
+        // $(divID + "~a").attr("href",restObj.url)
+        $(divID + "~a.button").attr("href",restObj.menu_url)
+        var thisRestCoord = {
+            "longitude": restObj.location.longitude,
+            "latitude": restObj.location.latitude
+        };
+        restaurantsCoord.push(thisRestCoord);
 
     });
     $(".results").removeClass("hide");
+    console.log(restaurantsCoord)
 };
 
 
