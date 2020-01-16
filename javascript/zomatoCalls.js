@@ -153,7 +153,7 @@ function searchRestaurant() {
     // if (searchKeyWord !== "") { searchAPIURL = searchAPIURL + "&q=" + searchKeyWord };
 
     // call restaurant API search and run populateRestaurantInfo on success
-    callAJAX(searchAPIURL, populateRestaurantInfo)
+    callAJAX(searchAPIURL, populateRestaurantInfo);
 }
 
 
@@ -163,23 +163,25 @@ function populateRestaurantInfo(response) {
     var restList = response.restaurants;
     // for each restaurant found...
     restList.forEach((element, index) => {
-        var normInd = (index + 1)
-        var divID = "#TopRatedName" + normInd
-        var restObj = element.restaurant
+        var normInd = (index + 1);
+        var divID = "#TopRatedName" + normInd;
+        var restObj = element.restaurant;
         $(divID + "~a>img").attr({
             "src": restObj.featured_image,
             "style": "width: 100% !important; height: 7em !important;"
         });
         $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
-        $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating)
-        // $(divID + "~a").attr("href",restObj.url)
-        $(divID + "~a.button").attr("href", restObj.menu_url)
+        $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating);
+        // $(divID + "~a").attr("href",restObj.url);
+        $(divID + "~a.button").attr("href", restObj.menu_url);
         var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + normInd;
         restaurantsCoord.push(thisRestCoord);
     });
     $(".results").removeClass("hide");
     // format to be lat,long|flag-i||lat,long|flag-i
-    restaurantsCoord = restaurantsCoord.join("||")
+    restaurantsCoord = restaurantsCoord.join("||");
+    getSinglePicture(restaurantsCoord);
+    $(".jumbotron").addClass("col-5 ml-5 float-left").css("width","800px");
 };
 
 
@@ -192,6 +194,6 @@ function callAJAX(url, callback) {
         // on success send response object back to callback function
         success: function (response) { callback(response) },
         type: "GET"
-    })
-}
+    });
+};
 

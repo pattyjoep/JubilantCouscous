@@ -19,8 +19,6 @@ function getMapPicture(lat, long) {
     console.log(mapURLCombined);
 }
 
-getMapPicture();
-
 //Geolocation Function to find page or user location coordinates
 //Add this script to HTML:  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 //Output of this will be inputs to other functions
@@ -28,11 +26,9 @@ var pageLatitude = '';
 var pageLongitude = '';
 
 function findPageLocation() {
-
     function success(position) {
         pageLatitude = position.coords.latitude;
         pageLongitude = position.coords.longitude;
-
         console.log(pageLatitude);
         console.log(pageLongitude);
     }
@@ -45,7 +41,6 @@ function findPageLocation() {
     } else {
         navigator.geolocation.getCurrentPosition(success, error);
     }
-
 }
 
 //Static Map Function with 5 locations on single map
@@ -58,12 +53,15 @@ function getSinglePicture(fiveCoordString) {
     //Create n numbers of imgs and name IDs before this to mapData-1, -2 etc n of i to index [i]
     //#mapData ID needs to be updated to where you want the map displayed 
     var mapURLCombined = mainMapURL + apiKey + allFiveLocations;
-    $("#mapData").attr("src", mapURLCombined);
+    $("#mapData").attr({
+        "src": mapURLCombined,
+        "style": "height: 29em;"
+    });
+    
 
     //Console log items
     console.log(mainMapURL);
     console.log(apiKey);
-    console.log(latitude);
-    console.log(longitude);
+    console.log(fiveCoordString);
     console.log(mapURLCombined);
 }
