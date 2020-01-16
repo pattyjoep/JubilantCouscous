@@ -181,7 +181,7 @@ function populateRestaurantInfo(response) {
     // format to be lat,long|flag-i||lat,long|flag-i
     restaurantsCoord = restaurantsCoord.join("||");
     getSinglePicture(restaurantsCoord);
-    $(".jumbotron").addClass("col-5 ml-5 float-left").css("width","800px");
+    $(".jumbotron").addClass("col-5 ml-5 float-left").css("width","790px");
 };
 
 
