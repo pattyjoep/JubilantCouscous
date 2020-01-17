@@ -64,7 +64,8 @@ function getSinglePicture(fiveCoordString) {
     var mapURLCombined = mainMapURL + apiKey + allFiveLocations;
     $("#mapData").attr({
         "src": mapURLCombined,
-        "style": "height: 29em;"
+        "style": "height: 25em; width: 430px; border-radius: 10px;"
     });
-
+    $("#MapImg").css("width: 430px;")
+    
 }

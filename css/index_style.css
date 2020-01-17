@@ -7,9 +7,12 @@ body {
   max-width: 100%;
   font-family: "Six Caps", sans-serif;
   font-size: 100%;
+  color: white;
   background-repeat: no-repeat;
   box-sizing: border-box;
+  height: inherit !important;
 }
+
 .orbit-container {
   height: 15em !important;
 }
@@ -24,7 +27,8 @@ body {
     display: center;
     justify-content: center;
     text-align: center;
-    max-width: 100%;
+    max-width: 60%;
+    margin: auto;
   }
 
   .jumbotron::-webkit-scrollbar-track {
@@ -63,3 +67,16 @@ body {
 .thumbnail {
 box-shadow: 1px 5px 15px 2px
 #7a41c4 };
+
+.modal {
+  color: black !important;
+}
+
+@media screen and (max-width: 600px) {
+
+  .top-rated-bar {
+    float: left;
+    background-color: red;
+  }
+
+}

@@ -30,12 +30,14 @@
   <!--Search Bar
         <li><input type="search" placeholder="Search">
           <li><button id="search-btn" type="submit"><i class="fa fa-search"></i></button>-->
-  <button id="findNear" type="button" class="button"> Find Nearby</button></li>
+  <button id="findNear" type="button" class="button">Find Nearby</button></li>
 
-  </ul>
-  </div>
   <!---Jumbotron-->
-  <div class="clearfix">
+  <div>
+    <div id="MapImg" class="col-5 mt-1 float-left hide">
+      <img id="mapData" src="" alt="">
+    </div>
+  <div id="JumbotronMain" class="clearfix">
     <div class="jumbotron jumbotron-fluid">
       <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
         <div class="orbit-wrapper">
@@ -92,15 +94,11 @@
         </nav>
       </div>
     </div>
-    <div class="col-5 mt-3 float-right">
-      <img id="mapData" src="" alt="">
-    </div>
   </div>
+</div>
 
   <!---Top Rated Bar-->
-
-
-  <div class="row small-up-5">
+  <div class="row small-up-2 medium-up-3 large-up-5 top-rated-bar">
     <h2 class="results hide">Top Rated Results</h2>
     <div class="results hide">
       <div class="column">
@@ -134,54 +132,52 @@
         <a href="#" class="button expanded">Menu</a>
       </div>
     </div>
+  </div>
+  
+  <br>
+  <br>
+  <br>
 
-    <div class="dropdown-divider"></div>
+  <!---Top Cuisines Bar-->
+  <h2>Top Cuisines</h2>
 
-    <!---Top Cuisines Bar-->
-
-    <h2>Top Cuisines</h2>
-    <div class="row column text-center">
+  <div class="row small-up-2 medium-up-3 large-up-6">
+    <div class="cuisine column">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/pizza">
+      <h5>Italian</h5>
     </div>
-
-    <div class="row small-up-2 medium-up-3 large-up-6">
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/pizza">
-        <h5>Italian</h5>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/sandwiches">
-        <h5>American</h5>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/indian">
-        <h5>Indian</h5>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/japanese">
-        <h5>Asian</h5>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/mexican">
-        <h5>Mexican</h5>
-      </div>
-      <div class="cuisine column">
-        <img class="thumbnail"
-          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/seafood">
-        <h5>Seafood</h5>
-      </div>
-
+    <div class="cuisine column">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/sandwiches">
+      <h5>American</h5>
+    </div>
+    <div class="cuisine column">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/indian">
+      <h5>Indian</h5>
+    </div>
+    <div class="cuisine column">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/japanese">
+      <h5>Asian</h5>
+    </div>
+    <div class="cuisine column">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/mexican">
+      <h5>Mexican</h5>
+    </div>
+    <div class="cuisine column">
+      <img class="thumbnail"
+        src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/seafood">
+      <h5>Seafood</h5>
     </div>
   </div>
-  <div id="modalNoCoords" class="modal" tabindex="-1" role="dialog">
+  <div id="modalNoCoords" class="modal modal-popup" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p>User's location still loading, please try again momentarily</p>
+          <p style="color: black;">User's location still loading, please try again momentarily</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary closeBtn" data-dismiss="modal">Close</button>
@@ -193,12 +189,11 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p>Searching...</p>
+          <p style="color: black;">Searching...</p>
         </div>
       </div>
     </div>
   </div>
-
 </body>
 
 <!-- Boostrap JS / JQUERY -->
