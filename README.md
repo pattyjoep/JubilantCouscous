@@ -4,7 +4,8 @@
 
 You're with a group of people and everyone's hungry, but none wants to make a decision on what restaurant to go too
 
-Visit www.xyz
+Visit https://pjpetro.github.io/JubilantCouscous/
+
 
 It will narrow your decisions to the top 5 rated restaurants in your vicinity for options that with and without cuisine filtering criteria.
 
@@ -17,7 +18,9 @@ It will narrow your decisions to the top 5 rated restaurants in your vicinity fo
 * Polished UI
 * Meets quality coding standards
 * No alerts programmed (geolocation is exception as it wasn't programmed)
-* Deployed:  
+* Deployed:  https://pjpetro.github.io/JubilantCouscous/
+
+
 
 
 
