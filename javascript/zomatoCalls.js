@@ -127,7 +127,7 @@ $(document).ready(function () {
             var searchAPIURL = "https://developers.zomato.com/api/v2.1/search?count=";
             // var searchKeyWord = ""
             // var searchByCategory = ""
-            var maxRestaurants = 10;
+            var maxRestaurants = 20;
             var sortBy = "&sort=rating";
             var searchByCuisines = "";
             var searchByLat = "&lat=" + pageLatitude;
@@ -173,19 +173,16 @@ $(document).ready(function () {
         restaurantsCoord = [];
         var restList = response.restaurants;
         // for each restaurant found...
-        console.log(restList)
         var arrayItemsToRemove = []
         restList.forEach((element, index) => {
             // if restaurant does not have an image url
             if (element.restaurant.featured_image === "" && element.restaurant.photo_count < 2) {
                 arrayItemsToRemove.push(index)
             }
-            console.log(arrayItemsToRemove)
         });
         var removePosition = 0
         arrayItemsToRemove.forEach(val => {
             itemToRemove = val - removePosition
-            console.log(itemToRemove)
             restList.splice(itemToRemove,1)
             removePosition += 1
 
@@ -198,7 +195,6 @@ $(document).ready(function () {
             var divID = "#TopRatedName" + normInd;
             var restObj = element.restaurant;
             var photoURL = ""
-            console.log(restObj)
             if (restObj.featured_image !== "") {
                 photoURL = restObj.featured_image
             } else if (restObj.photo_count > 1) {
@@ -206,7 +202,6 @@ $(document).ready(function () {
             } else {
                 photoURL = ""
             }
-            console.log(photoURL)
             $(divID + "~a>img").attr({
                 "src": photoURL,
                 "style": "width: 100% !important; height: 9em !important;"
