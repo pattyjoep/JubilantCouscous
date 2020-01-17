@@ -1,3 +1,14 @@
+// 
+var recentCoords = {}
+// get localstorage
+if(localStorage.getItem("recentCoords") !== null){
+    recentCoords = JSON.parse(localStorage.getItem("recentCoords"))
+}
+// if localstorge exists, and date is less than 5 minutes ago
+if(recentCoords.date ){
+// call function to get new Coords.
+findPageLocation();
+}
 //Static Map Function for single location
 //Inputs to change here:  Update latitude and longitude variables "41" and "-72" to input ids of restaurants or lat long
 function getMapPicture(lat, long) {
@@ -10,13 +21,6 @@ function getMapPicture(lat, long) {
     //#mapData ID needs to be updated to where you want the map displayed 
     var mapURLCombined = mainMapURL + apiKey + latitude + longitude;
     $("#mapData").attr("src", mapURLCombined);
-
-    //Console log items
-    console.log(mainMapURL);
-    console.log(apiKey);
-    console.log(latitude);
-    console.log(longitude);
-    console.log(mapURLCombined);
 }
 
 //Geolocation Function to find page or user location coordinates
@@ -29,8 +33,6 @@ function findPageLocation() {
     function success(position) {
         pageLatitude = position.coords.latitude;
         pageLongitude = position.coords.longitude;
-        console.log(pageLatitude);
-        console.log(pageLongitude);
     }
 
     function error() {
@@ -58,10 +60,4 @@ function getSinglePicture(fiveCoordString) {
         "style": "height: 29em;"
     });
     
-
-    //Console log items
-    console.log(mainMapURL);
-    console.log(apiKey);
-    console.log(fiveCoordString);
-    console.log(mapURLCombined);
 }

@@ -77,10 +77,10 @@
                   src=https://casasensei.com/wp-content/uploads/2019/06/South-Indian-Bruschetta-Recipe.jpg alt="Space">
                 <figcaption class="orbit-caption">Outta This World</figcaption>
               </figure>
-  
+
           </ul>
         </div>
-  
+
         <nav class="orbit-bullets">
           <button class="is-active" data-slide="0">
             <span class="show-for-sr">First slide details.</span>
@@ -177,8 +177,26 @@
 
     </div>
   </div>
+  <div id="modalNoCoords" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>User's location still loading, please try again momentarily</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary closeBtn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
+  <div id="modalWaiting" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Searching...</p>
+        </div>
+      </div>
+    </div>
   </div>
 
 </body>
@@ -200,10 +218,14 @@
 <!-- JQUERY -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<!-- Moment.js -->
+<script src="javascript/moment.js"></script>
+
 <!-- Custom JS / JQUERY-->
 <script src="javascript/locationScript.js"></script>
 <script src="javascript/zomatoCalls.js"></script>
 <script src="javascript/index_scripts.js"></script>
+<script src="javascript/test.js"></script>
 
 
 
