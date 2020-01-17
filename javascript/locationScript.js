@@ -1,13 +1,15 @@
 // 
 var recentCoords = {}
+var pageLatitude = ''
+var pageLongitude = ''
 // get localstorage
-if(localStorage.getItem("recentCoords") !== null){
-    recentCoords = JSON.parse(localStorage.getItem("recentCoords"))
+if (localStorage.getItem("recentCoords") !== null && moment().subtract().minutes('10').isBefore(recentCoords.date)) {
+    recentCoords = JSON.parse(localStorage.getItem("recentCoords"));
+    pageLatitude = recentCoords.coords.lat;
+    pageLongitude = recentCoords.coords.lon;
 }
-// if localstorge exists, and date is less than 5 minutes ago
-if(recentCoords.date ){
-// call function to get new Coords.
-findPageLocation();
+else {
+    findPageLocation();
 }
 //Static Map Function for single location
 //Inputs to change here:  Update latitude and longitude variables "41" and "-72" to input ids of restaurants or lat long
@@ -26,15 +28,20 @@ function getMapPicture(lat, long) {
 //Geolocation Function to find page or user location coordinates
 //Add this script to HTML:  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 //Output of this will be inputs to other functions
-var pageLatitude = '';
-var pageLongitude = '';
 
 function findPageLocation() {
     function success(position) {
         pageLatitude = position.coords.latitude;
         pageLongitude = position.coords.longitude;
+        recentCoords = {
+            "coords": {
+                "lat": position.coords.latitude,
+                "lon": position.coords.longitude
+            },
+            "date": moment()
+        }
+        localStorage.setItem("recentCoords",JSON.stringify(recentCoords))
     }
-
     function error() {
         status.textContent = 'Unable to retrieve your location';
     }
@@ -59,5 +66,5 @@ function getSinglePicture(fiveCoordString) {
         "src": mapURLCombined,
         "style": "height: 29em;"
     });
-    
+
 }
