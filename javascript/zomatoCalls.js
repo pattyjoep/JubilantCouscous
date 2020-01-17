@@ -19,6 +19,7 @@ $(document).ready(function () {
         // Future fucntionality to allow for one/more cusine type searches, 
         if (cuisineType === "") {
             // if no type defined, just search all restaurants
+            cuisineIDs = []
             searchRestaurant();
         } else {
             // if list of cuisines exists, search IDs first
@@ -126,7 +127,7 @@ $(document).ready(function () {
             var searchAPIURL = "https://developers.zomato.com/api/v2.1/search?count=";
             // var searchKeyWord = ""
             // var searchByCategory = ""
-            var maxRestaurants = 5;
+            var maxRestaurants = 10;
             var sortBy = "&sort=rating";
             var searchByCuisines = "";
             var searchByLat = "&lat=" + pageLatitude;
@@ -167,34 +168,65 @@ $(document).ready(function () {
     }
 
 
-// called on successful completion of restaurant search, populates restaurant data into HTML
-function populateRestaurantInfo(response) {
-    restaurantsCoord = [];
-    var restList = response.restaurants;
-    // for each restaurant found...
-    restList.forEach((element, index) => {
-        var normInd = (index + 1);
-        var divID = "#TopRatedName" + normInd;
-        var restObj = element.restaurant;
-        $(divID + "~a>img").attr({
-            "src": restObj.featured_image,
-            "style": "width: 100% !important; height: 9em !important;"
+    // called on successful completion of restaurant search, populates restaurant data into HTML
+    function populateRestaurantInfo(response) {
+        restaurantsCoord = [];
+        var restList = response.restaurants;
+        // for each restaurant found...
+        console.log(restList)
+        var arrayItemsToRemove = []
+        restList.forEach((element, index) => {
+            // if restaurant does not have an image url
+            if (element.restaurant.featured_image === "" && element.restaurant.photo_count < 2) {
+                arrayItemsToRemove.push(index)
+            }
+            console.log(arrayItemsToRemove)
         });
-        $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
-        $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating);
-        // $(divID + "~a").attr("href",restObj.url);
-        $(divID + "~a.button").attr("href", restObj.menu_url);
-        var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + normInd;
-        restaurantsCoord.push(thisRestCoord);
-    });
-    $(".results").removeClass("hide");
-    $("#MapImg").removeClass("hide");
-    // format to be lat,long|flag-i||lat,long|flag-i
-    restaurantsCoord = restaurantsCoord.join("||");
-    getSinglePicture(restaurantsCoord);
-    $("#JumbotronMain").addClass("hide")
+        var removePosition = 0
+        arrayItemsToRemove.forEach(val => {
+            itemToRemove = val - removePosition
+            console.log(itemToRemove)
+            restList.splice(itemToRemove,1)
+            removePosition += 1
 
-};
+        })
+        // truncate array @5
+        restList.length = 5
+        // for each restaurant found...
+        restList.forEach((element, index) => {
+            var normInd = (index + 1);
+            var divID = "#TopRatedName" + normInd;
+            var restObj = element.restaurant;
+            var photoURL = ""
+            console.log(restObj)
+            if (restObj.featured_image !== "") {
+                photoURL = restObj.featured_image
+            } else if (restObj.photo_count > 1) {
+                photoURL = restObj.photos[0].photo.url
+            } else {
+                photoURL = ""
+            }
+            console.log(photoURL)
+            $(divID + "~a>img").attr({
+                "src": photoURL,
+                "style": "width: 100% !important; height: 9em !important;"
+            });
+            $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
+            $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating);
+            $(divID + "~a:first").attr("href", restObj.url);
+            $(divID + "~a.button").attr("href", restObj.menu_url);
+            var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + normInd;
+            restaurantsCoord.push(thisRestCoord);
+        });
+        $("#modalWaiting").hide();
+        $(".results").removeClass("hide");
+        $("#MapImg").removeClass("hide");
+        // format to be lat,long|flag-i||lat,long|flag-i
+        restaurantsCoord = restaurantsCoord.join("||");
+        getSinglePicture(restaurantsCoord);
+        $("#JumbotronMain").addClass("hide")
+
+    };
 
 
     // function to just do ajax call and return the response
