@@ -11,7 +11,7 @@ It will narrow your decisions to the top 5 rated restaurants in your vicinity fo
 
 ## This website includes the technical components of:
 * Two server-side APIs, both new (Zomato & Mapquest)
-* Two CSS frameworks (Bootstrap & Foundations)
+* Two CSS frameworks (Bootstrap & Foundation)
 * Interactive
     * Accepts:  Automatic location and/or Cuisine Type Filter
     * Responses:  Top 5 locations by location generated including all 5 mapped on a single map
