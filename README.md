@@ -1,9 +1,26 @@
 # Hungry Humans
 
-For when you are hungry but don't care to make too many decisions....
+## Use Case:
 
-If you don't want to make any decisions, it will search without and filters and give you the top rated restaurants in your vicinity.
+You're with a group of people and everyone's hungry, but none wants to make a decision on what restaurant to go too
 
-It uses the geolocator API to request the user's current location and the Zomato api to get restaurant information, such as menu, picture, and resaurant page links. 
+Visit https://pjpetro.github.io/JubilantCouscous/
 
-When you do care about the type of food you wish to devour, you can click on various cuisine types and it will just search for that type of food.
+
+It will narrow your decisions to the top 5 rated restaurants in your vicinity for options that with and without cuisine filtering criteria.
+
+## This website includes the technical components of:
+* Two server-side APIs, both new (Zomato & Mapquest)
+* Two CSS frameworks (Bootstrap & Foundation)
+* Interactive
+    * Accepts:  Automatic location and/or Cuisine Type Filter
+    * Responses:  Top 5 locations by location generated including all 5 mapped on a single map
+* Polished UI
+* Meets quality coding standards
+* No alerts programmed (geolocation is exception as it wasn't programmed)
+* Deployed:  https://pjpetro.github.io/JubilantCouscous/
+
+
+
+
+
