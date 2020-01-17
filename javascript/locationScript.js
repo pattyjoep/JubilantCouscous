@@ -5,10 +5,10 @@ if(localStorage.getItem("recentCoords") !== null){
     recentCoords = JSON.parse(localStorage.getItem("recentCoords"))
 }
 // if localstorge exists, and date is less than 5 minutes ago
-if(recentCoords.date ){
+// if(recentCoords.date ){
 // call function to get new Coords.
 findPageLocation();
-}
+// }
 //Static Map Function for single location
 //Inputs to change here:  Update latitude and longitude variables "41" and "-72" to input ids of restaurants or lat long
 function getMapPicture(lat, long) {
@@ -57,7 +57,8 @@ function getSinglePicture(fiveCoordString) {
     var mapURLCombined = mainMapURL + apiKey + allFiveLocations;
     $("#mapData").attr({
         "src": mapURLCombined,
-        "style": "height: 29em;"
+        "style": "height: 25em; width: 430px; border-radius: 10px;"
     });
+    $("#MapImg").css("width: 430px;")
     
 }

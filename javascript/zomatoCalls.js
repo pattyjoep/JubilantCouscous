@@ -167,33 +167,34 @@ $(document).ready(function () {
     }
 
 
-    // called on successful completion of restaurant search, populates restaurant data into HTML
-    function populateRestaurantInfo(response) {
-        restaurantsCoord = [];
-        var restList = response.restaurants;
-        // for each restaurant found...
-        restList.forEach((element, index) => {
-            var normInd = (index + 1);
-            var divID = "#TopRatedName" + normInd;
-            var restObj = element.restaurant;
-            $(divID + "~a>img").attr({
-                "src": restObj.featured_image,
-                "style": "width: 100% !important; height: 7em !important;"
-            });
-            $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
-            $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating);
-            $(divID + "~a:first").attr("href",restObj.url);
-            $(divID + "~a.button").attr("href", restObj.menu_url);
-            var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + normInd;
-            restaurantsCoord.push(thisRestCoord);
+// called on successful completion of restaurant search, populates restaurant data into HTML
+function populateRestaurantInfo(response) {
+    restaurantsCoord = [];
+    var restList = response.restaurants;
+    // for each restaurant found...
+    restList.forEach((element, index) => {
+        var normInd = (index + 1);
+        var divID = "#TopRatedName" + normInd;
+        var restObj = element.restaurant;
+        $(divID + "~a>img").attr({
+            "src": restObj.featured_image,
+            "style": "width: 100% !important; height: 9em !important;"
         });
-        $("#modalWaiting").hide();
-        $(".results").removeClass("hide");
-        // format to be lat,long|flag-i||lat,long|flag-i
-        fiveCoordString = restaurantsCoord.join("||");
-        getSinglePicture(fiveCoordString);
-        $(".jumbotron").addClass("col-5 ml-5 float-left").css("width", "790px");
-    };
+        $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
+        $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating);
+        // $(divID + "~a").attr("href",restObj.url);
+        $(divID + "~a.button").attr("href", restObj.menu_url);
+        var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + normInd;
+        restaurantsCoord.push(thisRestCoord);
+    });
+    $(".results").removeClass("hide");
+    $("#MapImg").removeClass("hide");
+    // format to be lat,long|flag-i||lat,long|flag-i
+    restaurantsCoord = restaurantsCoord.join("||");
+    getSinglePicture(restaurantsCoord);
+    $("#JumbotronMain").addClass("hide")
+
+};
 
 
     // function to just do ajax call and return the response
