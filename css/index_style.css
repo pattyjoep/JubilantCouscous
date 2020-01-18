@@ -1,0 +1,120 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to bottom right, #1d1d1d, #7a41c4);
+  min-height: 100vh;
+  max-width: 100%;
+  font-family: "Six Caps", sans-serif;
+  font-size: 100%;
+  color: white;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  height: inherit !important;
+}
+
+.orbit-container {
+  height: 15em !important;
+}
+
+.jumbotron {
+    overflow-y:500px;
+    height: 500px;
+    margin: left 15px;
+    display: flex;
+    border: 5px solid #5f5e5e;
+    border-radius: -5px;
+    display: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 60%;
+    margin: auto;
+  }
+
+  .jumbotron::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px rgba(63, 63, 63, 0.3);
+    border-radius: 0px;
+    background-color: transparent;
+  }
+    
+      .h1-text { 
+        font-size: 50px;
+        text-align: center;
+        line-height: 1;
+        color:rgba(0,0,0,0.8);
+        display: flex;
+        justify-content: center;
+        font-family: "Bebas Neue", cursive;
+        text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+        0px -5px 35px rgba(255,255,255,0.3);
+      }
+
+      .jumbotron::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+      }
+.header-logo {
+    float: center;
+}
+
+.search {
+    float: right;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.thumbnail {
+box-shadow: 1px 5px 15px 2px
+#7a41c4 };
+
+.modal {
+  color: black !important;
+}
+
+.top-rated-bar {
+ /* Media Query */
+}
+
+.map-img {
+  width: 202%;
+  margin-right: -370px;
+}
+
+.top-cuisines-div {
+  /* Media Query */
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+  .top-rated-bar {
+    margin-top: 20px;
+    float: left;
+  }
+
+  .map-img {
+    width: 100%;
+    margin-right: 200px;
+  }
+
+  .main-div {
+    width: 160%;
+    margin-left: 75px;
+  }
+
+  .top-cuisines-div {
+   float: left;
+
+  }
+
+}
+
+@media screen and (max-width: 1750px) {
+
+  .map-img {
+    width: 100%;
+    margin-right: 200px;
+  }
+}
