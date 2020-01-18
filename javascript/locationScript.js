@@ -81,11 +81,8 @@ function getSinglePicture(fiveCoordString) {
         "src": mapURLCombined,
         "style": "height: 25em; width: 430px; border-radius: 10px;"
     });
-<<<<<<< Updated upstream
     // style div container of map image element
-    $("#MapImg").css("width: 430px;")
-=======
+    // $("#MapImg").css("width: 430px;")
     $("#MapImg").css("width: 100%;")
->>>>>>> Stashed changes
     
 }
