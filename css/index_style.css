@@ -2,22 +2,23 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to bottom right, #1d1d1d, #7a41c4);
+  background: linear-gradient(to bottom right, #1d1d1d, #7a41c4);
   min-height: 100vh;
   max-width: 100%;
-  font-family: "Six Caps", sans-serif;
+  font-family:'Ibarra Real Nova', serif;
   font-size: 100%;
   background-repeat: no-repeat;
   box-sizing: border-box;
+  height: initial !important;
 }
 .orbit-container {
   height: 15em !important;
 }
 
 .jumbotron {
-    overflow-y:500px;
-    height: 500px;
-    margin: left 15px;
+    overflow: y 500px;;
+    height: 600px;
+    margin: left 5px;
     display: flex;
     border: 5px solid #5f5e5e;
     border-radius: -5px;
@@ -41,7 +42,7 @@ body {
         color:rgba(0,0,0,0.8);
         display: flex;
         justify-content: center;
-        font-family: "Bebas Neue", cursive;
+        font-family: 'Ibarra Real Nova', serif;
         text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
         0px -5px 35px rgba(255,255,255,0.3);
       }
