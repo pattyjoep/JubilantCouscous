@@ -72,11 +72,49 @@ box-shadow: 1px 5px 15px 2px
   color: black !important;
 }
 
+.top-rated-bar {
+ /* Media Query */
+}
+
+.map-img {
+  width: 202%;
+  margin-right: -370px;
+}
+
+.top-cuisines-div {
+  /* Media Query */
+}
+
+
+
 @media screen and (max-width: 600px) {
 
   .top-rated-bar {
+    margin-top: 20px;
     float: left;
-    background-color: red;
   }
 
+  .map-img {
+    width: 100%;
+    margin-right: 200px;
+  }
+
+  .main-div {
+    width: 160%;
+    margin-left: 75px;
+  }
+
+  .top-cuisines-div {
+   float: left;
+
+  }
+
+}
+
+@media screen and (max-width: 1750px) {
+
+  .map-img {
+    width: 100%;
+    margin-right: 200px;
+  }
 }

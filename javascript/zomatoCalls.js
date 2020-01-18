@@ -180,11 +180,30 @@ $(document).ready(function () {
                 arrayItemsToRemove.push(index)
             }
         });
+<<<<<<< Updated upstream
         var removePosition = 0
         arrayItemsToRemove.forEach(val => {
             itemToRemove = val - removePosition
             restList.splice(itemToRemove,1)
             removePosition += 1
+=======
+        $(divID).text(normInd + ": " + restObj.name).attr("style", "white-space:nowrap; overflow:hidden;")
+        $(divID + "~h5").text("Rating: " + restObj.user_rating.aggregate_rating);
+        // $(divID + "~a").attr("href",restObj.url);
+        $(divID + "~a.button").attr("href", restObj.menu_url);
+        var thisRestCoord = restObj.location.latitude + "," + restObj.location.longitude + "|flag-" + normInd;
+        restaurantsCoord.push(thisRestCoord);
+    });
+    $("#modalWaiting").hide();
+    $(".results").removeClass("hide");
+    $("#MapImg").removeClass("hide");
+    // format to be lat,long|flag-i||lat,long|flag-i
+    restaurantsCoord = restaurantsCoord.join("||");
+    getSinglePicture(restaurantsCoord);
+    $("#JumbotronMain").addClass("hide")
+    //$("#TopCuisinesHeader").addClass("hide")
+    //$("#TopCuisines").addClass("hide")
+>>>>>>> Stashed changes
 
         })
         // truncate array @5

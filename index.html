@@ -33,10 +33,11 @@
   <button id="findNear" type="button" class="button">Find Nearby</button></li>
 
   <!---Jumbotron-->
-  <div>
-    <div id="MapImg" class="col-5 mt-1 float-left hide">
+  <div class="main-div">
+    <div id="MapImg" class="col-5 mt-1 float-left hide map-img">
       <img id="mapData" src="" alt="">
     </div>
+  </div>
   <div id="JumbotronMain" class="clearfix">
     <div class="jumbotron jumbotron-fluid">
       <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
@@ -95,7 +96,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
   <!---Top Rated Bar-->
   <div class="row small-up-2 medium-up-3 large-up-5 top-rated-bar">
@@ -139,6 +140,7 @@
   <br>
 
   <!---Top Cuisines Bar-->
+<<<<<<< Updated upstream
   <h2>Top Cuisines</h2>
 
   <div class="row small-up-2 medium-up-3 large-up-6">
@@ -171,29 +173,64 @@
       <img class="thumbnail"
         src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/seafood">
       <h5>Seafood</h5>
+=======
+  <div class="top-cuisines-div">
+    <h2 id="TopCuisinesHeader" class="row small-up-2 medium-up-3 large-up-6">Top Cuisines</h2>
+    <div id="TopCuisines" class="row small-up-2 medium-up-3 large-up-6">
+      <div class="cuisine column">
+        <img class="thumbnail"
+          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/pizza">
+        <h5>Italian</h5>
+      </div>
+      <div class="cuisine column">
+        <img class="thumbnail"
+          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/sandwiches">
+        <h5>American</h5>
+      </div>
+      <div class="cuisine column">
+        <img class="thumbnail"
+          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/indian">
+        <h5>Indian</h5>
+      </div>
+      <div class="cuisine column">
+        <img class="thumbnail"
+          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/japanese">
+        <h5>Asian</h5>
+      </div>
+      <div class="cuisine column">
+        <img class="thumbnail"
+          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/mexican">
+        <h5>Mexican</h5>
+      </div>
+      <div class="cuisine column">
+        <img class="thumbnail"
+          src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_300,h_300,f_auto,c_fill,fl_lossy/search/browse-images/seafood">
+        <h5>Seafood</h5>
+      </div>
+>>>>>>> Stashed changes
     </div>
-  </div>
-  <div id="modalNoCoords" class="modal modal-popup" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p style="color: black;">User's location still loading, please try again momentarily</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary closeBtn" data-dismiss="modal">Close</button>
+    <div id="modalNoCoords" class="modal modal-popup" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p style="color: black;">User's location still loading, please try again momentarily</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeBtn" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="modalWaiting" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p style="color: black;">Searching...</p>
+    <div id="modalWaiting" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p style="color: black;">Searching...</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </div>  
 </body>
 
 <!-- Boostrap JS / JQUERY -->
