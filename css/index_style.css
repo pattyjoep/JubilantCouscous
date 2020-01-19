@@ -19,7 +19,7 @@ body {
 
 .jumbotron {
     overflow: y 500px;;
-    height: 600px;
+    height: 500px;
     margin: left 5px;
     display: flex;
     border: 5px solid #5f5e5e;
@@ -27,7 +27,7 @@ body {
     display: center;
     justify-content: center;
     text-align: center;
-    max-width: 60%;
+    max-width: 80%;
     margin: auto;
   }
 
