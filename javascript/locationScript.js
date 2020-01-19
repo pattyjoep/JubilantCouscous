@@ -1,67 +1,88 @@
-//Static Map Function for single location
-//Inputs to change here:  Update latitude and longitude variables "41" and "-72" to input ids of restaurants or lat long
+// variable for local storage coords
+var recentCoords = {}
+// variables for coords used by restaurant finder
+var pageLatitude = ''
+var pageLongitude = ''
+// if local storage exists...
+if (localStorage.getItem("recentCoords") !== null ) {
+    // parse to an object
+    recentCoords = JSON.parse(localStorage.getItem("recentCoords"));
+    // if the local storage is within the past ten minutes...
+    if(moment().subtract().minutes('10').isBefore(recentCoords.date)) {
+        // use coords from local storage
+        pageLatitude = recentCoords.coords.lat;
+        pageLongitude = recentCoords.coords.lon;
+    } else {
+        // if local storage was set more than 10 minutes ago, call function to get user's location
+        findPageLocation();
+    }
+}
+else {
+    // if localstorage item does not exist call function to get users location
+    findPageLocation();
+}
+//Future functionality: Static Map Function for single location
 function getMapPicture(lat, long) {
+    // base url & api key
     var mainMapURL = "https://open.mapquestapi.com/staticmap/v5/map?";
     var apiKey = "&key=rv6UkjMZNdE70qdwfiiGWvFoMoySvljp";
+    // add in lat & long based on function parameters
     var latitude = "&locations=" + lat + ",";
     var longitude = long;
-
-    //Create n numbers of imgs and name IDs before this to mapData-1, -2 etc n of i to index [i]
-    //#mapData ID needs to be updated to where you want the map displayed 
+    // create full api url string
     var mapURLCombined = mainMapURL + apiKey + latitude + longitude;
-    $("#mapData").attr("src", mapURLCombined);
-
-    //Console log items
-    console.log(mainMapURL);
-    console.log(apiKey);
-    console.log(latitude);
-    console.log(longitude);
-    console.log(mapURLCombined);
+    //#mapData update Image element with api string
+   $("#mapData").attr("src", mapURLCombined);
 }
 
 //Geolocation Function to find page or user location coordinates
-//Add this script to HTML:  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-//Output of this will be inputs to other functions
-var pageLatitude = '';
-var pageLongitude = '';
-
 function findPageLocation() {
+    // on success of browser finding user's location...
     function success(position) {
         pageLatitude = position.coords.latitude;
         pageLongitude = position.coords.longitude;
-        console.log(pageLatitude);
-        console.log(pageLongitude);
+        // set found coords to object with current time
+        recentCoords = {
+            "coords": {
+                "lat": position.coords.latitude,
+                "lon": position.coords.longitude
+            },
+            "date": moment()
+        }
+        // set coords with time stamp to local storage
+        localStorage.setItem("recentCoords",JSON.stringify(recentCoords))
     }
-
+    // on failure of browser to get user's location
+    // this is actually not a valid notification and should be addressed
     function error() {
         status.textContent = 'Unable to retrieve your location';
     }
+    // if browser does not have the capability to find the user's location...
     if (!navigator.geolocation) {
+        // this is not a valid notification and needs to be addressed
         status.textContent = 'Geolocation is not supported by your browser';
     } else {
+        // otherwise try to get user's location and proceed with success or failure functions
         navigator.geolocation.getCurrentPosition(success, error);
     }
 }
 
 //Static Map Function with 5 locations on single map
-//Add this script to HTML:  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 function getSinglePicture(fiveCoordString) {
+    // base URL and API key
     var mainMapURL = "https://open.mapquestapi.com/staticmap/v5/map?";
     var apiKey = "&key=rv6UkjMZNdE70qdwfiiGWvFoMoySvljp";
+    // add combined coords string from function parameter to API paramenter string
     var allFiveLocations = "&locations=" + fiveCoordString;
-
-    //Create n numbers of imgs and name IDs before this to mapData-1, -2 etc n of i to index [i]
-    //#mapData ID needs to be updated to where you want the map displayed 
+    // create full url with combined coords from parameter
     var mapURLCombined = mainMapURL + apiKey + allFiveLocations;
+    // set IMG source url to map API url, and style image element.
     $("#mapData").attr({
         "src": mapURLCombined,
-        "style": "height: 29em;"
+        "style": "height: 25em; width: 430px; border-radius: 10px;"
     });
+    // style div container of map image element
+    // $("#MapImg").css("width: 430px;")
+    $("#MapImg").css("width: 100%;")
     
-
-    //Console log items
-    console.log(mainMapURL);
-    console.log(apiKey);
-    console.log(fiveCoordString);
-    console.log(mapURLCombined);
 }
